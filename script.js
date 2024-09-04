@@ -51,10 +51,17 @@ const perguntas = [
 
 let atual = 0;
 let perguntaAtual;
+let historiaFinal = "";
 
 function mostraPergunta() {
+    if (atual >= perguntas.length){
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaPerguntas.textContent = "";
+    caixaResultado.textContent = "";
     mostraAlternativas();
 }
 
@@ -62,8 +69,22 @@ function mostraAlternativas() {
     for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa;
+        botaoAlternativas.addEventListener("click",() => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     }
+}
+
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacao = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacao + " ";
+    atual+++;
+    mostraPergunta();
+}
+
+function mostraResultado () {
+    caixaPerguntas.textContent=" Nos dia atuais..."
+    caixaResultado.textContent= historiaFinal;
+    caixaAlternativas.textContent= "";
 }
 
 mostraPergunta();
