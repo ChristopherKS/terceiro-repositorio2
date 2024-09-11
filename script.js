@@ -18,21 +18,21 @@ const perguntas = [
     {
         enunciado: "De que maneira a promoção da feijoada como um símbolo da diversidade cultural e sua conexão com práticas agroecológicas podem ajudar a combater estereótipos raciais e preconceitos associados à culinária afro-brasileira?",
         alternativas: [
-        {
-            
-            texto: "Ao enfatizar a feijoada apenas como um prato de origem europeia, a promoção da feijoada não contribui para a desmistificação de estereótipos raciais nem para a preservação agroecológica.",
-            afirmacao: "Promover a feijoada como um símbolo da diversidade cultural, destacando sua conexão com práticas agroecológicas e a herança afro-brasileira, pode ajudar a combater estereótipos raciais ao reconhecer e valorizar a contribuição cultural e a importância ambiental dos ingredientes."
-        },
+            {
+
+                texto: "Ao enfatizar a feijoada apenas como um prato de origem europeia, a promoção da feijoada não contribui para a desmistificação de estereótipos raciais nem para a preservação agroecológica.",
+                afirmacao: "Promover a feijoada como um símbolo da diversidade cultural, destacando sua conexão com práticas agroecológicas e a herança afro-brasileira, pode ajudar a combater estereótipos raciais ao reconhecer e valorizar a contribuição cultural e a importância ambiental dos ingredientes."
+            },
         ]
     },
     {
         enunciado: "A feijoada, ao refletir aspectos da culinária afro-brasileira, pode ser interpretada como um símbolo tanto da preservação cultural das comunidades afrodescendentes quanto das desigualdades e do racismo histórico que influenciaram sua origem e consumo?",
         alternativas: [
-        {
+            {
 
-            texto: "A feijoada preserva tradições culturais afro-brasileiras, mas também reflete desigualdades e racismo histórico, pois ingredientes mais nobres eram consumidos pela elite branca, enquanto os cortes simples eram para as populações afrodescendentes ",
-            afirmacao: "A feijoada não tem nenhuma relação com a culinária afro-brasileira ou com a história da desigualdade social no Brasil. ela é simplesmente um prato típico de qualquer cozinha brasileira, sem conexão com aspectos culturais ou históricos específicos das comunidades afrodescendentes. "
-        },
+               texto: "A feijoada preserva tradições culturais afro-brasileiras, mas também reflete desigualdades e racismo histórico, pois ingredientes mais nobres eram consumidos pela elite branca, enquanto os cortes simples eram para as populações afrodescendentes ",
+                afirmacao: "A feijoada não tem nenhuma relação com a culinária afro-brasileira ou com a história da desigualdade social no Brasil. ela é simplesmente um prato típico de qualquer cozinha brasileira, sem conexão com aspectos culturais ou históricos específicos das comunidades afrodescendentes. "
+            },
         ]
     },
     {
@@ -78,16 +78,16 @@ function mostraPergunta() {
     }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaPerguntas.textContent = "";
-    caixaResultado.textContent = "";
+    caixaPerguntas.textContent= "";
+    caixaPerguntas.textContent= "";
     mostraAlternativas();
 }
 
 function mostraAlternativas() {
     for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa;
-        botaoAlternativas.addEventListener("click",() => respostaSelecionada(alternativa));
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
@@ -99,8 +99,8 @@ function respostaSelecionada(opcaoSelecionada){
     mostraPergunta();
 }
 
-function mostraResultado () {
-    caixaPerguntas.textContent=" Nos dia atuais..."
+function mostraResultado (){
+    caixaPerguntas.textContent= "Nos dias atuais...";
     caixaResultado.textContent= historiaFinal;
     caixaAlternativas.textContent= "";
 }
